@@ -56,7 +56,7 @@ def parse_sensor_data(raw_data):
         return {}
 
 # Заголовок Streamlit
-st.title("Мониторинг показаний датчиков")
+st.title("Система контроля и мониторинга фальшпола Supervisor")
 
 # Загружаем данные из CSV
 data = pd.read_csv(LOG_FILE)
