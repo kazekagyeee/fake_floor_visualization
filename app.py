@@ -8,17 +8,16 @@ import os
 st.set_page_config(layout="wide")
 
 # Настройки COM-порта
-COM_PORT = "COM8"  # Укажите ваш COM-порт
+COM_PORT = "COM4"
 BAUD_RATE = 9600
 
 # Имя файла для логирования
 LOG_FILE = "log.csv"
 
 # Список параметров из строки данных
-SENSORS = ["MQ2", "MQ9", "smoke", "T", "u", "P", "g", "dB", "vibro"]
+SENSORS = ["MQ9", "smoke", "T", "u", "P", "g", "dB", "vibro"]
 SENSOR_LABELS = {
-    "MQ2": "Газ MQ2 (единицы)",
-    "MQ9": "Газ MQ9 (единицы)",
+    "MQ9": "Загазованность (Промилле)",
     "smoke": "Дым (ppm)",
     "T": "Температура (°C)",
     "u": "Влажность (%)",
@@ -63,14 +62,14 @@ data = pd.read_csv(LOG_FILE)
 
 
 # Создаем столбцы для графиков
-columns = st.columns(3)
+columns = st.columns(4)
 
 # Плейсхолдеры для графиков
 charts = {}
 
 # Создаем графики для каждого датчика
 for i, sensor in enumerate(SENSORS):
-    with columns[i % 3]:
+    with columns[i % 4]:
         st.markdown(f"### {SENSOR_LABELS[sensor]}")
         charts[sensor] = st.empty()  # Создаем пустое место для графика
 
